@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f4eddc">
+  <title>The Crossword</title>
+  <meta name="description" content="Endless auto-generated crosswords — pick a topic, subtopic and difficulty, and solve.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,900;1,400;1,900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Archivo:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23f4eddc'/><rect x='2' y='2' width='13' height='13' fill='none' stroke='%23221b12' stroke-width='2'/><rect x='17' y='17' width='13' height='13' fill='%23b43a1b'/></svg>">
+</head>
+<body>
+  <div class="sheet">
+
+    <header class="masthead">
+      <p class="kicker">Pick a subject · Set the grid · Solve</p>
+      <h1>The <em>Crossword</em></h1>
+      <div class="dateline">
+        <span>Endless Edition</span>
+        <span>·</span>
+        <span>Set fresh by an algorithm, every round</span>
+        <span>·</span>
+        <span>Max grid 15 × 15</span>
+      </div>
+    </header>
+
+    <!-- puzzle setting desk -->
+    <section class="desk" aria-label="Puzzle settings">
+      <div class="field">
+        <label for="subject">Subject</label>
+        <select id="subject">
+          <option value="ALL">All subjects</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="topic">Topic</label>
+        <select id="topic">
+          <option value="ALL">All topics</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="subtopic">Subtopic</label>
+        <select id="subtopic">
+          <option value="ALL">All subtopics</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="difficulty">Hint difficulty</label>
+        <select id="difficulty">
+          <option value="ALL">All — mixed hints</option>
+          <option value="1">Easy</option>
+          <option value="2">Medium</option>
+          <option value="3">Hard</option>
+        </select>
+      </div>
+      <div class="desk-action">
+        <button id="createBtn" class="btn-ink">Set the Puzzles</button>
+        <span id="scopeCount"></span>
+      </div>
+    </section>
+
+    <main id="game" hidden>
+      <div class="status">
+        <span id="statusRound">Round 1</span>
+        <span class="dot">●</span>
+        <span id="statusPuzzle"></span>
+        <span class="dot">●</span>
+        <span id="statusWords"></span>
+        <span class="dot">●</span>
+        <span id="statusSolved">0 solved</span>
+        <span class="nav">
+          <button id="prevBtn" class="btn-line" title="Previous puzzle">◀ Prev</button>
+          <button id="nextBtn" class="btn-line" title="Next puzzle">Next ▶</button>
+        </span>
+      </div>
+
+      <div class="play">
+        <div class="grid-col">
+          <div class="current-clue" id="currentClue">Pick a square or a clue to begin.</div>
+          <div id="gridWrap">
+            <div id="grid" class="grid"></div>
+            <div class="stamp"><span>Solved</span></div>
+          </div>
+          <div id="nudge"></div>
+          <div class="toolbar">
+            <button id="checkBtn" class="btn-line">Check</button>
+            <button id="revealLetterBtn" class="btn-line">Reveal letter</button>
+            <button id="revealWordBtn" class="btn-line">Reveal word</button>
+            <button id="clearBtn" class="btn-line">Clear</button>
+            <button id="solvedNext" class="btn-ink" hidden>Next puzzle →</button>
+          </div>
+        </div>
+
+        <div class="clues">
+          <section>
+            <h2>Across</h2>
+            <ol id="acrossList"></ol>
+          </section>
+          <section>
+            <h2>Down</h2>
+            <ol id="downList"></ol>
+          </section>
+        </div>
+      </div>
+
+      <section id="roundDone" hidden>
+        <h2>Round complete — <em>well solved!</em></h2>
+        <p id="roundDoneText"></p>
+        <button id="newRoundBtn" class="btn-ink">New round · fresh grids &amp; clues</button>
+      </section>
+    </main>
+
+    <footer>
+      <p>Generated entirely in your browser</p>
+    </footer>
+  </div>
+
+  <!-- offscreen input: summons the soft keyboard on phones/tablets -->
+  <input id="kbd" class="sr-input" type="text" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" aria-hidden="true" tabindex="-1">
+
+  <script src="js/data.js"></script>
+  <script src="js/generator.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
