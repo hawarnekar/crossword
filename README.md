@@ -6,8 +6,10 @@ Subtopic** scope and a hint difficulty, and the generator lays out fresh
 interlocking grids from a word database. Solve them all and it deals a new
 round with different layouts and different hints, forever.
 
-The bundled database contains **220 words with 660+ hints** from CBSE Class 10
-**Science** and **Social Science** (NCERT) chapters, but the engine is
+The bundled database contains **764 words with 4,000+ hints** covering every
+chapter of the current (rationalised) NCERT Class 10 **Science** and **Social
+Science** textbooks. Words and hint facts are drawn only from the textbook
+text and chosen for exam revision value. The engine is
 subject-agnostic: swap in any word list and it becomes a crossword site for
 that corpus.
 
